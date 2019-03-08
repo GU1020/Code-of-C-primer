@@ -1,0 +1,106 @@
+// 课后练习.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include<iostream>
+
+#include<vector>
+
+
+
+using namespace std;
+
+
+
+void IsPrefix(vector<int> &v1, vector<int> &v2);
+
+
+
+int main()
+
+{
+
+	vector<int> ivec1, ivec2;
+
+	int iData = 0;
+
+	cout << "请分别为两个容器输入数据：" << endl;
+
+	cout << "容器1: ";
+
+	while (cin >> iData)
+
+		ivec1.push_back(iData);
+
+
+
+	cout << endl;
+
+
+
+	cin.clear();
+
+	cin.sync();
+
+
+
+	cout << "容器2：" << endl;
+
+	while (cin >> iData)
+
+		ivec2.push_back(iData);
+
+
+
+	cout << endl;
+
+
+
+	IsPrefix(ivec1, ivec2);
+
+
+
+
+
+	return 0;
+
+}
+
+
+
+
+
+void IsPrefix(vector<int> &v1, vector<int> &v2)
+
+{
+
+	vector<int>::size_type len;
+
+	len = ((v1.size() < v2.size()) ? v1.size() : v2.size());
+
+
+
+	decltype(len) i;
+
+	for (i = 0; i != len; ++i)
+
+		if (v1[i] != v2[i])
+
+			break;
+
+
+
+	if (len == v1.size() && i == len)
+
+		cout << "容器1是容器2的前缀。" << endl;
+
+	else if (len == v2.size() && i == len)
+
+		cout << "容器2是容器1的前缀。" << endl;
+
+	else
+
+		cout << "容器1和容器2互不为对方前缀。" << endl;
+
+}
+
